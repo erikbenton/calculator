@@ -1,0 +1,36 @@
+{
+  "name": "etch-a-sketch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "autoprefixer": "^7.1.6",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^7.0.0",
+    "gulp-watch": "^4.3.11",
+    "normalize.css": "^7.0.0",
+    "postcss-import": "^11.0.0",
+    "postcss-nested": "^2.1.2",
+    "postcss-simple-vars": "^4.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.6",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^7.0.0",
+    "gulp-watch": "^4.3.11",
+    "normalize.css": "^7.0.0",
+    "postcss-import": "^11.0.0",
+    "postcss-nested": "^2.1.2",
+    "postcss-simple-vars": "^4.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erikbenton/odin-project-etch-a-sketch.git"
+  },
+  "author": "Erik Benton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erikbenton/odin-project-etch-a-sketch/issues"
+  },
+  "homepage": "https://github.com/erikbenton/odin-project-etch-a-sketch#readme"
+}
