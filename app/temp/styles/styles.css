@@ -452,4 +452,23 @@ template {
 
 .container {
 	width: 960px;
+	height: 960px;
+	margin: 10px auto;
+}
+
+.square {
+	width: 6.25%;
+	height: 6.25%;
+	background-color: white;
+	color: white;
+	display: inline-block;
+}
+
+.black-square {
+		color: black;
+		background-color: black;
+	}
+
+.row {
+	display: block;
 }
