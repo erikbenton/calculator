@@ -4,9 +4,5 @@
 	background-color: white;
 	color: white;
 	display: inline-block;
+	margin: 0;
 }
-
-.black-square {
-		color: black;
-		background-color: black;
-	}

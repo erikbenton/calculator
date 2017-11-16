@@ -454,6 +454,7 @@ template {
 	width: 960px;
 	height: 960px;
 	margin: 10px auto;
+	border: 1px solid black;
 }
 
 .square {
@@ -462,13 +463,16 @@ template {
 	background-color: white;
 	color: white;
 	display: inline-block;
+	margin: 0;
 }
-
-.black-square {
-		color: black;
-		background-color: black;
-	}
 
 .row {
 	display: block;
+	margin: 0;
+}
+
+.clear-btn {
+	width: 200px;
+	display: block;
+	margin: 10px auto 0 auto;
 }
