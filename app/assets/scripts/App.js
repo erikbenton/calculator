@@ -6,10 +6,12 @@ let adder 			= document.querySelector(".operator__add");
 let subtracter	= document.querySelector(".operator__subtract");
 let divider			= document.querySelector(".operator__divide");
 let multiplier	= document.querySelector(".operator__multiply");
-let equals			= document.querySelector(".operator__equals");
+let equals			= document.querySelector(".operator_equals");
 
-let firstNumber = [];
-let result 			= [];
+let firstNumber = "";
+let numberArray = [];
+let operatorArray = [];
+let result 			= "";
 
 function initialize()
 {
@@ -26,105 +28,105 @@ function numberEvents()
 {
 	numbers.forEach(function(number) {
 		number.addEventListener("click", (e) => {
-			firstNumber.push(e.target.textContent);
-			screen.innerText = firstNumber.join("");
+			firstNumber += e.target.innerText;
+			screen.innerText = firstNumber;
 		});
 	});
 }
 
 function operatorEvents()
 {
-	adder.addEventListener("click", (e) => {
-		let num1 = firstNumber.join("");
-		screen.innerText = num1;
-		firstNumber = [];
+	operators.forEach(function(operator)
+	{
+			operator.addEventListener("click", (e) => {
+		
+		if(e.target.innerText === "=") return;
 
-		if(result.length === 0)
-		{
-			result = num1;
-		}
-		else
-		{
-			result = add(num1, result);
-		}
-
+		numberArray.push(firstNumber);
+		operatorArray.push(e.target.innerText);
+		console.log(numberArray, operatorArray);
+		firstNumber = "";
 		screen.innerText = "0";
 
 	});
+});
 
-	subtracter.addEventListener("click", (e) => {
-		let num1 = firstNumber.join("");
-		screen.innerText = num1;
-		firstNumber = [];
+	
 
-		if(result.length === 0)
-		{
-			result = num1;
-		}
-		else
-		{
-			result = subtract(num1, result);
-		}
-
-		screen.innerText = "0";
-
+	equals.addEventListener("click", (e) => {
+		numberArray.push(firstNumber);
+		firstNumber = "";
+		console.log(numberArray, operatorArray);
+		screen.innerText = calcAnswer(numberArray, operatorArray);
 	});
 
-	divider.addEventListener("click", (e) => {
-		let num1 = firstNumber.join("");
-		screen.innerText = num1;
-		firstNumber = [];
-
-		if(result.length === 0)
-		{
-			result = num1;
-		}
-		else
-		{
-			result = divide(num1, result);
-		}
-
-		screen.innerText = "0";
-	});
-
-	multiplier.addEventListener("click", (e) => {
-		let num1 = firstNumber.join("");
-		screen.innerText = num1;
-		firstNumber = [];
-
-		if(result.length === 0)
-		{
-			result = num1;
-		}
-		else
-		{
-			result = multiply(num1, result);
-		}
-
-		screen.innerText = "0";
-	});
-
-	equals.addEventListener
 }
 
 function add(num1, num2)
 {
+	if(num2 === undefined) num2 = 0;
 	return +num1 + +num2;
 }
 
 function subtract(num1, num2)
 {
-	return +num1 - +num2;
+	if(num2 === undefined) num2 = 0;
+	return +num2 - +num1;
 }
 
 function divide(num1, num2)
 {
+	if(num2 === undefined) num2 = 1;
 	return +num1 / +num2;
 }
 
 function multiply(num1, num2)
 {
+	if(num2 === undefined) num2 = 1;
 	return +num1 * +num2;
+}
+
+function determineOperation(operator)
+{
+	switch(operator)
+	{
+		case '+':
+			return add;
+			break;
+		case '-':
+			return subtract;
+			break;
+		case '/':
+			return divide;
+			break;
+		case "X":
+			return multiply;
+			break;
+	}
+}
+
+function calcAnswer(numbersArray, operationsArray)
+{
+	if(numbersArray.length === 0 || operationsArray.length === 0)
+	{
+		numberArray = [];
+		operatorArray = [];
+		return "0";
+	}
+
+	if(numbersArray.length - operationsArray.length !== 1) return;
+
+	let num1 = numbersArray.pop();
+	let operator;
+	let operation;
+
+	while(numbersArray.length > 0)
+	{
+		operator = operationsArray.pop();
+ 		operation = determineOperation(operator);
+ 		num1 = operation(num1,numbersArray.pop());
+	}
+	return num1;
 }
 
 initialize();
