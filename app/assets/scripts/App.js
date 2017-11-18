@@ -21,7 +21,7 @@ function initialize()
 	// add operators event listeners
 	operatorEvents();
 
-	screen.innerText = "0";
+	displayNumber(0);
 }
 
 function numberEvents()
@@ -48,18 +48,15 @@ function operatorEvents()
 		firstNumber = "";
 		screen.innerText = "0";
 
+		});
 	});
-});
-
-	
 
 	equals.addEventListener("click", (e) => {
 		numberArray.push(firstNumber);
 		firstNumber = "";
 		console.log(numberArray, operatorArray);
-		screen.innerText = calcAnswer(numberArray, operatorArray);
+		displayNumber(calcAnswer(numberArray, operatorArray));
 	});
-
 }
 
 function add(num1, num2)
@@ -83,7 +80,7 @@ function divide(num1, num2)
 function multiply(num1, num2)
 {
 	if(num2 === undefined) num2 = 1;
-	return +num1 * +num2;
+	return parseFloat(num1) * parseFloat(num2);
 }
 
 function determineOperation(operator)
@@ -126,7 +123,20 @@ function calcAnswer(numbersArray, operationsArray)
  		operation = determineOperation(operator);
  		num1 = operation(num1,numbersArray.pop());
 	}
-	return num1;
+	return num1.toFixed(4);
+}
+
+function displayNumber(numberToDisplay)
+{
+	
+	let displayedNumber = "" + numberToDisplay;
+
+	if(numberToDisplay.length > 6)
+	{
+		displayedNumber = numberToDisplay.substring(0, 6);
+	}
+
+	screen.innerText = displayedNumber;
 }
 
 initialize();
