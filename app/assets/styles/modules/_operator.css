@@ -1,0 +1,18 @@
+.operator {
+
+	&__add {
+		background-color: purple;
+	}
+
+	&__subtract {
+		background-color: green;
+	}
+
+	&__divide {
+		background-color: blue;
+	}
+
+	&__multiply {
+		background-color: orange;
+	}
+}

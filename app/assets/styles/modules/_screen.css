@@ -1,0 +1,8 @@
+.screen {
+	height: 100%;
+	width: 100%;
+	margin: 0 auto 5px auto;
+	background-color: lightgray;
+	font-size: 10.0rem;
+	text-align: right;
+}

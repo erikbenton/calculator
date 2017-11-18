@@ -1,0 +1,7 @@
+.body {
+	width: 50%;
+	height: 900px;
+	margin: 10px auto;
+	text-align: center;
+	box-sizing: border-box;
+}
